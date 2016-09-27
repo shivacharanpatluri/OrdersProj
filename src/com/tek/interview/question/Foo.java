@@ -81,8 +81,9 @@ class OrderLine {
 			throw new Exception("Item is NULL");
 		}
 		assert quantity > 0;
-		item = item;
-		quantity = quantity;
+		//Bug 2
+		this.item = item;
+		this.quantity = quantity;
 	}
 
 	public Item getItem() {
