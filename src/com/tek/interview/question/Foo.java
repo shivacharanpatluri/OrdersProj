@@ -2,6 +2,7 @@ package com.tek.interview.question;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -94,8 +95,8 @@ class OrderLine {
 }
 
 class Order {
-
-	private List<OrderLine> orderLines;
+    //Bug1
+	private List<OrderLine> orderLines = new ArrayList<OrderLine>();
 
 	public void add(OrderLine o) throws Exception {
 		if (o == null) {
