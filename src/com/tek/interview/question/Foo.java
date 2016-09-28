@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 /* ****************************************************************************************
  
@@ -154,17 +155,17 @@ class calculator {
 				double tax = 0;
 
 				if (r.get(i).getItem().getDescription().contains("imported")) {
-					tax = rounding(r.get(i).getItem().getPrice() * 0.15); // Extra 5% tax on
+					tax = r.get(i).getItem().getPrice() * 0.15; // Extra 5% tax on
 					// imported items
 				} else {
-					tax = rounding(r.get(i).getItem().getPrice() * 0.10);
+					tax = r.get(i).getItem().getPrice() * 0.10;
 				}
 
 				// Calculate the total price
-				double totalprice = r.get(i).getItem().getPrice() + Math.floor(tax);
+				double totalprice = r.get(i).getItem().getPrice() + tax;
 
 				// Print out the item's total price
-				System.out.println(r.get(i).getQuantity() + " "+r.get(i).getItem().getDescription() + ": " + Math.floor(totalprice));
+				System.out.println(r.get(i).getQuantity() + " "+r.get(i).getItem().getDescription() + ": " + Math.round(totalprice*100.0)/100.0);
 
 				// Keep a running total
 				totalTax += tax;
@@ -172,16 +173,16 @@ class calculator {
 			}
 
 			// Print out the total taxes
-			System.out.println("Sales Tax: " + Math.floor(totalTax));
+			System.out.println("Sales Tax: " + Math.round(totalTax*100.0)/100.0);
 
-			total = total + totalTax;
+			//total = total;
 
 			// Print out the total amount
-			System.out.println("Total: " + Math.floor(total * 100) / 100);
+			System.out.println("Total: " + Math.round(total * 100.0) / 100.0);
 			grandtotal += total;
 		}
 
-		System.out.println("Sum of orders: " + Math.floor(grandtotal * 100) / 100);
+		System.out.println("Sum of orders: " + Math.round(grandtotal * 100.0) / 100.0);
 	}
 }
 
@@ -189,7 +190,7 @@ public class Foo {
 
 	public static void main(String[] args) throws Exception {
 
-		Map<String, Order> o = new HashMap<String, Order>();
+		Map<String, Order> o = new TreeMap<String, Order>();
 
 		Order c1 = new Order();
 
@@ -220,6 +221,8 @@ public class Foo {
 		c3.add(new OrderLine(new Item("box of importd chocolates", (float) 11.25), 1));
 
 		o.put("Order 3", c3);
+		
+		
 
 		new calculator().calculate(o);
 
