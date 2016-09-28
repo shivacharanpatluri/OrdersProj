@@ -157,21 +157,21 @@ class calculator {
 				double tax = 0;
 				
 				if (r.get(i).getItem().getDescription().toLowerCase().contains("imported")) {
-					tax = r.get(i).getItem().getPrice() * 0.15; // Extra 5% tax on
+					tax = r.get(i).getItem().getPrice()*r.get(i).getQuantity() * 0.15; // Extra 5% tax on
 					// imported items
 				} else {
-					tax = r.get(i).getItem().getPrice() * 0.10;
+					tax = r.get(i).getItem().getPrice()*r.get(i).getQuantity() * 0.10;
 				}
 
 				// Calculate the total price
-				double totalprice = r.get(i).getItem().getPrice() + tax;
+				double totalprice = r.get(i).getItem().getPrice()*r.get(i).getQuantity() + tax;
 
 				// Print out the item's total price
 				System.out.println(r.get(i).getQuantity() + " "+r.get(i).getItem().getDescription() + ": " + Math.round(totalprice*100.0)/100.0);
 
 				// Keep a running total
 				totalTax += tax;
-				total += r.get(i).getItem().getPrice();
+				total += r.get(i).getItem().getPrice()*r.get(i).getQuantity();
 			}
 
 			// Print out the total taxes
@@ -220,7 +220,7 @@ public class Foo {
 		c3.add(new OrderLine(new Item("Imported bottle of perfume", (float) 27.99), 1));
 		c3.add(new OrderLine(new Item("bottle of perfume", (float) 18.99), 1));
 		c3.add(new OrderLine(new Item("packet of headache pills", (float) 9.75), 1));
-		c3.add(new OrderLine(new Item("box of impoted chocolates", (float) 11.25), 1));
+		c3.add(new OrderLine(new Item("box of imported chocolates", (float) 11.25), 1));
 
 		o.put("Order 3", c3);
 		
