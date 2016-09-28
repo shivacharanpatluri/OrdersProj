@@ -220,7 +220,7 @@ public class Foo {
 		c3.add(new OrderLine(new Item("Imported bottle of perfume", (float) 27.99), 1));
 		c3.add(new OrderLine(new Item("bottle of perfume", (float) 18.99), 1));
 		c3.add(new OrderLine(new Item("packet of headache pills", (float) 9.75), 1));
-		c3.add(new OrderLine(new Item("box of imported chocolates", (float) 11.25), 1));
+		c3.add(new OrderLine(new Item("box of impoted chocolates", (float) 11.25), 1));
 
 		o.put("Order 3", c3);
 		
