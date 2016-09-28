@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /* ****************************************************************************************
  
@@ -153,8 +155,8 @@ class calculator {
 
 				// Calculate the taxes
 				double tax = 0;
-
-				if (r.get(i).getItem().getDescription().contains("imported")) {
+				
+				if (r.get(i).getItem().getDescription().toLowerCase().contains("imported")) {
 					tax = r.get(i).getItem().getPrice() * 0.15; // Extra 5% tax on
 					// imported items
 				} else {
@@ -218,7 +220,7 @@ public class Foo {
 		c3.add(new OrderLine(new Item("Imported bottle of perfume", (float) 27.99), 1));
 		c3.add(new OrderLine(new Item("bottle of perfume", (float) 18.99), 1));
 		c3.add(new OrderLine(new Item("packet of headache pills", (float) 9.75), 1));
-		c3.add(new OrderLine(new Item("box of importd chocolates", (float) 11.25), 1));
+		c3.add(new OrderLine(new Item("box of imported chocolates", (float) 11.25), 1));
 
 		o.put("Order 3", c3);
 		
